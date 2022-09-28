@@ -1,4 +1,4 @@
-# zelda-totk-bot
+# The Legend of Zelda countdown twitter bot
 Twitter countdown for the new The Legend of Zelda Tears of the Kingdom
 
 
