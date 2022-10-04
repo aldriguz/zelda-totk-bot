@@ -6,4 +6,4 @@ Twitter countdown for the new The Legend of Zelda Tears of the Kingdom
 - NET 6
 - Twitter API v2
 - Tweetinvi
-- Vault
+- ~~Vault~~
