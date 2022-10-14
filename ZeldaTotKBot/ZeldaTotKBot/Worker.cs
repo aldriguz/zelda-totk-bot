@@ -9,6 +9,7 @@ namespace ZeldaTotKBot
         private readonly string _CONSUMER_SECRET;
         private readonly string _ACCESS_TOKEN;
         private readonly string _ACCESS_TOKEN_SECRET;
+        private readonly DateTime _releaseDate;
 
         public Worker(ILogger<Worker> logger)
         {
