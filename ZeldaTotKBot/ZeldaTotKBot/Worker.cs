@@ -36,7 +36,7 @@ namespace ZeldaTotKBot
                 else
                 {
                     _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                    var daysRemaining = _releaseDate.Subtract(DateTime.Now).TotalDays;
+                    var daysRemaining = Convert.ToInt32(_releaseDate.Subtract(DateTime.Now).TotalDays);
                     TwitterClient client = new TwitterClient(_CONSUMER_KEY, _CONSUMER_SECRET, _ACCESS_TOKEN, _ACCESS_TOKEN_SECRET);
                     var tweet = await client.Tweets.PublishTweetAsync($"The Legend of Zelda Tears of the Kingdom is comming in {daysRemaining} days!");
                     _logger.LogInformation("Tweet published: " + tweet);
