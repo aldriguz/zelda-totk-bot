@@ -46,7 +46,7 @@ namespace ZeldaTotKBot
                     _logger.LogInformation("Tweet published: " + tweet);
                 }
 
-                _logger.LogInformation($"Worker will speel until next execution due to: {TimeSpan.FromDays(1).TotalHours}");
+                _logger.LogInformation($"Worker will sleep until next execution due to: {TimeSpan.FromDays(1).TotalHours}");
                 _logger.LogInformation("===== Zelda bot worker process completed =====");
                 await Task.Delay(TimeSpan.FromDays(1), stoppingToken);
             }
