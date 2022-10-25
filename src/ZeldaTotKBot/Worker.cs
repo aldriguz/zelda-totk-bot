@@ -25,7 +25,11 @@ namespace ZeldaTotKBot
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                if(string.IsNullOrEmpty(_CONSUMER_KEY) || string.IsNullOrEmpty(_CONSUMER_SECRET) || string.IsNullOrEmpty(_ACCESS_TOKEN) || string.IsNullOrEmpty(_ACCESS_TOKEN_SECRET))
+                _logger.LogInformation("===== Zelda bot worker process start =====");
+
+                LogSetupData();
+
+                if (string.IsNullOrEmpty(_CONSUMER_KEY) || string.IsNullOrEmpty(_CONSUMER_SECRET) || string.IsNullOrEmpty(_ACCESS_TOKEN) || string.IsNullOrEmpty(_ACCESS_TOKEN_SECRET))
                 {
                     _logger.LogError("One of the twitter keys is missing, check your environment variables.");
                 }
@@ -42,8 +46,22 @@ namespace ZeldaTotKBot
                     _logger.LogInformation("Tweet published: " + tweet);
                 }
 
+                _logger.LogInformation($"Worker will speel until next execution due to: {TimeSpan.FromDays(1).TotalHours}");
+                _logger.LogInformation("===== Zelda bot worker process completed =====");
                 await Task.Delay(TimeSpan.FromDays(1), stoppingToken);
             }
+        }
+
+        private void LogSetupData()
+        {
+            if (_logger == null) return;
+
+            _logger.LogInformation("Running at current configuration");
+            _logger.LogInformation($"{nameof(_CONSUMER_KEY)} => {_CONSUMER_KEY}");
+            _logger.LogInformation($"{nameof(_CONSUMER_SECRET)} => {_CONSUMER_SECRET}");
+            _logger.LogInformation($"{nameof(_ACCESS_TOKEN)} => {_ACCESS_TOKEN}");
+            _logger.LogInformation($"{nameof(_ACCESS_TOKEN_SECRET)} => {_ACCESS_TOKEN_SECRET}");
+            _logger.LogInformation($"{nameof(_releaseDate)} => {_releaseDate}");
         }
     }
 }
